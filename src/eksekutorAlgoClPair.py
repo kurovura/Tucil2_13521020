@@ -4,11 +4,16 @@ import algoClPair
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-# Masukan berupa titik-titik sejumlah n yang dibangkitkan secaran acak
+# Masukan berupa titik-titik sejumlah n yang dibangkitkan secaran acak dan validasi masukan agar n>=2
+while True:
+    n = int(input("Masukkan jumlah titik: "))
+    if n >= 2:
+        break
+    else:
+        print("Jumlah titik harus >= 2. Silakan coba lagi.")
 
-n = int(input("Masukkan jumlah titik : "))
+points = [(random.uniform(0, 2000), random.uniform(0, 2000), random.uniform(0, 2000)) for i in range(n)]
 
-points = [(random.randint(0, 2000), random.randint(0, 2000), random.randint(0, 2000)) for i in range(n)]
 print("Titik-titik yang dibangkitkan : ")
 
 for p in points:
