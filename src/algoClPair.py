@@ -16,11 +16,27 @@ def bfClosestPair(points):
                 minDist = dist
     return clPair, minDist, countEuc
 
+def quicksort(points, dim):
+    if len(points) <= 1:
+        return points
+    else :
+        pivot = points[len(points) // 2][dim]
+        left, right, equal = [], [], []
+        for point in points:
+            if point[dim] < pivot:
+                left.append(point)
+            elif point[dim] > pivot:
+                right.append(point)
+            else:
+                equal.append(point)
+        return quicksort(left, dim) + equal + quicksort(right, dim)
+
 def sorting(points):
-    pointsX = sorted(points, key=lambda x: x[0])
-    pointsY = sorted(points, key=lambda x: x[1])
-    pointsZ = sorted(points, key=lambda x: x[2])
+    pointsX = quicksort(points, 0)
+    pointsY = quicksort(points, 1)
+    pointsZ = quicksort(points, 2)
     return pointsX, pointsY, pointsZ
+
 
 # Algoritma divide and conquer
 def dcClosestPair(pointsX, pointsY, pointsZ):
